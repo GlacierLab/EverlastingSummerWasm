@@ -1,0 +1,25 @@
+{
+    "dir": "ltr",
+    "scope": "/",
+    "name": "永恒之夏",
+    "short_name": "永恒之夏",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "display_override": [
+        "fullscreen",
+        "minimal-ui"
+    ],
+    "id": "/index.html",
+    "lang": "cn",
+    "orientation": "landscape-primary",
+    "background_color": "#FA3025",
+    "theme_color": "#FA3025",
+    "description": "永恒之夏基于WASM的在线移植版"
+}
