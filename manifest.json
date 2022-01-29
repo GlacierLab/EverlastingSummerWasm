@@ -10,13 +10,13 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/index.html",
+    "start_url": "/",
     "display": "standalone",
     "display_override": [
         "fullscreen",
         "minimal-ui"
     ],
-    "id": "/index.html",
+    "id": "/",
     "lang": "cn",
     "orientation": "landscape-primary",
     "background_color": "#FA3025",
