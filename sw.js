@@ -7,7 +7,7 @@ var AZUSA_PATCH_SKIP_LIST = [
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
 var URLS = [
-    './index.html',
+    './',
 ]
 self.addEventListener('fetch', event => {
     if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0)) {
@@ -15,9 +15,10 @@ self.addEventListener('fetch', event => {
             caches.open(CACHE_NAME).then(async cache => {
                 return cache.match(event.request).then(response => {
                     return response || fetch(event.request).then(response => {
-                        console.log('file is not cached, fetching : ' + event.request.url)
-                        cache.put(event.request, response.clone());
-                        console.log('file cached : ' + event.request.url)
+                        if (response.status < 300) {
+                            cache.put(event.request, response.clone());
+                            console.log('file cached : ' + event.request.url)
+                        }
                         return response;
                     });
                 });
