@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<title>视频播放页面</title>
+
+<head>
+    <link rel="canonical" href="https://es.qinlili.bid/player.html" />
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <style>
+        body {
+            -webkit-font-smoothing: subpixel-antialiased;
+            margin: 0px;
+            -webkit-user-select: none;
+            user-select: none;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #player {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+
+        .barBtn:hover {
+            background-color: #cccccc
+        }
+
+        .barBtn:active {
+            background-color: #999999
+        }
+    </style>
+</head>
+
+<body>
+    <video id="player" autoplay preload controls></video>
+    <script>
+        document.querySelector("#player").src = document.location.search.substr(1);
+    </script>
+</body>
+
+</html>
