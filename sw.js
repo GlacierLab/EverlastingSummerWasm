@@ -1,6 +1,6 @@
 ﻿var APP_PREFIX = '永恒之夏'
-var VERSION = '20220129'
-var VERSION_AZUSA_PATCH_USE = '0'
+var VERSION = '20220130'
+var VERSION_AZUSA_PATCH_USE = '20220129'
 var AZUSA_PATCH_SKIP_LIST = [
     'https://qinlili.bid/jslib/Bella.js'
 ]
