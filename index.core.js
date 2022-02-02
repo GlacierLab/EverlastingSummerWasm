@@ -6,7 +6,6 @@ window.open = (url, target, feature) => {
         videoFrame.frameBorder = 0;
         videoFrame.style = "z-index:9999;position:fixed;backdrop-filter: blur(10px) brightness(100%);background-color: rgba(255, 255, 255, .6);width:100%;margin-top:0px;height:100%;left:0px;right:0px;top:0px;";
         document.body.appendChild(videoFrame);
-        videoFrame.src = "https://static.xuexi.cn/search/online/index.html";
         var clsBtn = document.createElement("img");
         clsBtn.style = "z-index:10000;filter: invert(100%);position:fixed;display: inline-block;right:0px;top:0px;float:right;height:32px;width:32px;transition:background-color 0.2s;"
         clsBtn.className = "barBtn"
