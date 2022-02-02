@@ -1,6 +1,11 @@
 # EverlastingSummerWasm
 ## 基于WASM的永恒之夏网页移植
+[itch.io项目页](https://qinlili23333.itch.io/everlasting-summer-online)  
+<br>
 
+## 马上在线体验
+[琴梨梨自建](https://es.qinlili.bid)（PWA支持完善，省流量）  
+[itch.io](https://v6p9d9t4.ssl.hwcdn.net/html/5189756/index.html)（部分地区直连更快）  
 
 ## 相比Steam版的改动
 使用[un.rpyc](https://github.com/CensoredUsername/unrpyc)和[unrpa](https://github.com/Lattyware/unrpa)对最新Steam版本解包得到工程文件  
