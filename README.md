@@ -5,7 +5,7 @@
 
 ## 马上在线体验
 [琴梨梨自建](https://es.qinlili.bid)（PWA支持完善，省流量）  
-[Github Pages](https://185-199-109-153.dynamic-ip.hinet.net/)（PWA支持完善，慢一些）
+[Github Pages](https://185-199-109-153.dynamic-ip.hinet.net/)（PWA支持完善，慢一些）  
 [itch.io](https://v6p9d9t4.ssl.hwcdn.net/html/5189756/index.html)（部分地区直连更快）  
 
 ## 相比Steam版的改动
