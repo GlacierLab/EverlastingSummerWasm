@@ -1,0 +1,158 @@
+body {
+    font-family: arial;
+    user-select: none;
+}
+
+.emscripten {
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+div.emscripten {
+    text-align: center;
+}
+
+div.emscripten_border {
+    border: 1px solid black;
+}
+
+/* the canvas *must not* have any border or padding, or mouse coords will be wrong */
+canvas.emscripten {
+    border: 0px none;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+}
+
+#emscripten_logo {
+    display: inline-block;
+    margin: 0;
+}
+
+.spinner {
+    height: 30px;
+    width: 30px;
+    vertical-align: top;
+    position: absolute;
+
+    -webkit-animation: rotation .8s linear infinite;
+    -moz-animation: rotation .8s linear infinite;
+    -o-animation: rotation .8s linear infinite;
+    animation: rotation 0.8s linear infinite;
+
+    border-left: 5px solid rgb(235, 235, 235);
+    border-right: 5px solid rgb(235, 235, 235);
+    border-bottom: 5px solid rgb(235, 235, 235);
+    border-top: 5px solid rgb(120, 120, 120);
+
+    border-radius: 100%;
+    background-color: rgb(189, 215, 46);
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+    }
+
+    to {
+        -o-transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#statusbar_container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: auto;
+}
+
+#statusbar {
+    width: 50%;
+    margin: auto;
+    min-width: 340px;
+    padding: 10px;
+    height: 40px;
+    background-color: rgb(40, 40, 40);
+}
+
+#status {
+    vertical-align: top;
+    font-weight: bold;
+    color: rgb(120, 120, 120);
+    width: 100%;
+    padding-bottom: 2px;
+    text-align: left;
+}
+
+#progress {
+    height: 20px;
+    width: 100%;
+}
+
+
+#ContextContainer {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: white;
+}
+
+#ContextButton {
+    text-decoration: none;
+    color: grey;
+    font-size: xx-large;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+}
+
+#ContextButton:focus {
+    outline: none;
+}
+
+#ContextMenu a {
+    text-decoration: none;
+    color: lightgrey;
+}
+
+#ContextMenu a:hover {
+    text-decoration: nsone;
+    color: grey;
+}
+
+#ContextMenu {
+    background-color: rgb(40, 40, 40);
+    padding: 5px;
+}

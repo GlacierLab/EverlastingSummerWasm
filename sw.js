@@ -1,25 +1,33 @@
 ﻿var APP_PREFIX = '永恒之夏'
-var VERSION = '20220130'
-var VERSION_AZUSA_PATCH_USE = '20220129'
-var AZUSA_PATCH_SKIP_LIST = [
-    'https://qinlili.bid/jslib/Bella.js'
-]
+var VERSION = '20220516'
+var VERSION_AZUSA_PATCH_USE = 'ForceUpdate'
+var AZUSA_PATCH_SKIP_LIST = []
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
 var URLS = [
-    './',
+    './'
 ]
+const getCacheName = url => {
+    return CACHE_NAME;
+}
 self.addEventListener('fetch', event => {
-    if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0)) {
+    if (event.request.url.indexOf("getVersionWorker") > 0) {
+        event.respondWith(new Response(VERSION));
+        return;
+    }
+    if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1)) {
         event.respondWith(
-            caches.open(CACHE_NAME).then(async cache => {
+            caches.open(getCacheName(event.request.url)).then(async cache => {
                 return cache.match(event.request).then(response => {
                     return response || fetch(event.request).then(response => {
-                        if (response.status < 300) {
+                        if (response.status < 400) {
                             cache.put(event.request, response.clone());
                             console.log('file cached : ' + event.request.url)
                         }
                         return response;
+                    }).catch(error => {
+                        console.log("failed to fetch :" + event.request.url)
+                        console.log(error);
                     });
                 });
             })
@@ -30,33 +38,34 @@ self.addEventListener('fetch', event => {
     }
 });
 self.addEventListener('install', e => {
-    e.waitUntil(
-        caches.open(CACHE_NAME).then(async cache => {
-            console.log('installing cache : ' + CACHE_NAME)
-            if ((await caches.has(AZUSA_CACHE))) {
-                console.log("Found Old Cache! Azusa Patch Working...");
-                caches.open(AZUSA_CACHE).then(oldCache => {
-                    AZUSA_PATCH_SKIP_LIST.forEach(async url => {
-                        let tempResponse = await oldCache.match(url);
-                        if (tempResponse) {
-                            console.log("Azusa Success Transfer Old Cache : " + url)
-                            cache.put(url, tempResponse);
-                        }
-                    })
+    self.skipWaiting();
+    const install = async () => {
+        const cache = await caches.open(CACHE_NAME)
+        console.log('installing cache : ' + CACHE_NAME)
+        if ((await caches.has(AZUSA_CACHE))) {
+            console.log("Found Old Cache! Azusa Patch Working...");
+            caches.open(AZUSA_CACHE).then(oldCache => {
+                AZUSA_PATCH_SKIP_LIST.forEach(async url => {
+                    let tempResponse = await oldCache.match(url);
+                    if (tempResponse) {
+                        console.log("Azusa Success Transfer Old Cache : " + url)
+                        cache.put(url, tempResponse);
+                    }
                 })
-            }
-            return cache.addAll(URLS)
-        })
-    )
-})
+            })
+        }
+        await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS));
+        return true;
+    }
+    e.waitUntil(install());
+});
 self.addEventListener('activate', e => {
     e.waitUntil(
         caches.keys().then((keyList) => {
             var cacheWhitelist = keyList.filter(key => {
                 return key.indexOf(APP_PREFIX)
             })
-            cacheWhitelist.push(CACHE_NAME)
-
+            cacheWhitelist.push(CACHE_NAME);
             return Promise.all(keyList.map((key, i) => {
                 if (cacheWhitelist.indexOf(key) === -1) {
                     console.log('deleting cache : ' + keyList[i])
@@ -65,4 +74,13 @@ self.addEventListener('activate', e => {
             }))
         })
     )
-})
+});
+self.addEventListener('notificationclick', function (event) {
+    event.notification.close();
+    console.log(event)
+    switch (event.notification.tag) {
+        default: {
+            break;
+        }
+    }
+}, false);
